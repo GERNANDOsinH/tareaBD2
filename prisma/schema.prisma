@@ -45,5 +45,5 @@ model correo {
   es_favorito Boolean
 
   remitente Usuario @relation("remitente", fields: [correo_remitente], references:[direccion_correo])
-  destinatario Usuario @relation("destinario", fields: [correo_destinatario], references: [direccion_correo])
+  destinatario Usuario @relation("destinatario", fields: [correo_destinatario], references: [direccion_correo])
 }
