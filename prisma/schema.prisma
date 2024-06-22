@@ -9,8 +9,10 @@ datasource db {
 
 
 model Usuario {
-  direccion_correo String @id @db.VarChar(150)
+  email String @id @db.VarChar(150)
+  nombre String @db.VarChar(20)
   descripcion String @db.VarChar(500)
+  clave String @db.VarChar(15)
 
   direccion_favorita direccion_favorita[]
   direccion_bloqueada direccion_bloqueada[]
@@ -22,18 +24,18 @@ model Usuario {
 model direccion_favorita {
   correo_usuario String
   direccion_favorita String @db.VarChar(150)
-  fecha_agregado DateTime
+  fecha_agregado DateTime @default(now())
 
-  usuario Usuario @relation(fields: [correo_usuario], references: [direccion_correo])
+  usuario Usuario @relation(fields: [correo_usuario], references: [email])
   @@id([correo_usuario, direccion_favorita])
 }
 
 model direccion_bloqueada {
   correo_usuario String
   direccion_bloqueada String @db.VarChar(150)
-  fecha_agregado DateTime
+  fecha_agregado DateTime @default(now())
 
-  usuario Usuario @relation(fields: [correo_usuario], references: [direccion_correo])
+  usuario Usuario @relation(fields: [correo_usuario], references: [email])
   @@id([correo_usuario, direccion_bloqueada])
 }
 
@@ -41,9 +43,9 @@ model correo {
   id Int @id @default(autoincrement())
   correo_remitente String
   correo_destinatario String
-  fecha_envio DateTime
+  fecha_envio DateTime @default(now())
   es_favorito Boolean
 
-  remitente Usuario @relation("remitente", fields: [correo_remitente], references:[direccion_correo])
-  destinatario Usuario @relation("destinatario", fields: [correo_destinatario], references: [direccion_correo])
+  remitente Usuario @relation("remitente", fields: [correo_remitente], references:[email])
+  destinatario Usuario @relation("destinatario", fields: [correo_destinatario], references: [email])
 }

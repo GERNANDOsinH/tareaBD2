@@ -18,7 +18,7 @@
   },
   "module": "src/index.js",
   "description": "To get started with this template, simply paste this command into your terminal:\r ```bash\r bun create elysia ./elysia-example\r ```",
-  "main": "index.js",
+  "main": "index.ts",
   "keywords": [],
   "author": "",
   "license": "ISC"
