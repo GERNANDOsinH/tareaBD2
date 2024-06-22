@@ -1,10 +1,12 @@
 {
   "name": "tareabd2",
   "version": "1.0.50",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
-  },
+    "scripts": {
+      "dev": "bun --watch src/index.ts",
+      "build": "bun build src/index.ts",
+      "start": "NODE_ENV=production bun src/index.ts",
+      "test": "bun test"
+    },
   "dependencies": {
     "@prisma/client": "5.15.1",
     "elysia": "latest"
@@ -16,7 +18,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2"
   },
-  "module": "src/index.js",
+  "module": "src/server/server.js",
   "description": "To get started with this template, simply paste this command into your terminal:\r ```bash\r bun create elysia ./elysia-example\r ```",
   "main": "index.ts",
   "keywords": [],
