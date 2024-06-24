@@ -17,12 +17,12 @@ async function buscar(email:string,clave:string){
 export class consulta {
     constuctor(){}
 
-    public async crearUsuario(datos: {email: string, nombre: string, descripcion: string, clave: string}) {
+    public async crearUsuario(datos: {nombre: string,correo: string, descripcion: string, clave: string}) {
         try {
             const newUser = await prisma.Usuario.create({
                 data: {
                     nombre: datos.nombre,
-                    email: datos.email,
+                    correo: datos.correo,
                     clave: datos.clave,
                     descripcion: datos.descripcion
                 }
@@ -37,10 +37,16 @@ export class consulta {
     public async informacion(email: string) {
         try{
             const user = await prisma.Usuario.findUnique({
-                datos: {
+                where: {
                     email: email
                 }
             })
+            if (user == null) return;
+            return {
+                nombre: user.nombre,
+                correo: user.correo,
+                descripcion: user.descripcion
+            }
         }
         catch(error){
             console.error('Error al encontrar los datos del usuario:', error);

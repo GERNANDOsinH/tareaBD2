@@ -1,5 +1,6 @@
 -- CreateTable
 CREATE TABLE "Usuario" (
+    "nombre" VARCHAR(20) NOT NULL,
     "email" VARCHAR(150) NOT NULL,
     "descripcion" VARCHAR(500) NOT NULL,
     "clave" VARCHAR(15) NOT NULL,

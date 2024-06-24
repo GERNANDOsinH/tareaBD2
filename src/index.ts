@@ -1,6 +1,9 @@
-import { Server } from './server/server.js'
+import { Elysia } from 'elysia'
+import { api } from './logic/TypeScript/routes';
 
-(() => {
-    const server = new Server()
-    server.start()
-})
+
+
+const app = new Elysia()
+    .group('/api', (app) => app.use(api))
+    .listen(3000)
+console.log('Server is runnig at port 3000')

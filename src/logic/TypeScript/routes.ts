@@ -5,17 +5,16 @@ import { consulta } from './scriptUsers.js'
 
 const miConsulta = new consulta(); 
 
-export const api = new Elysia({prefix: '/api'})
+export const api = new Elysia()
     .get('/informacion/:correo',({ params : {correo} }) => {return miConsulta.informacion(correo)})
-    .post('/registar',({ body }) => miConsulta.crearUsuario(body), {
+    .post('/registrar',miConsulta.crearUsuario.bind(miConsulta.crearUsuario),{
         body: t.Object({
-            email: t.String(),
             nombre: t.String(),
-            descripcion: t.String(),
-            clave: t.String()
-            })
-        }
-    )
+            correo: t.String(),
+            clave: t.String(),
+            descripcion: t.String()
+        })
+    })
     .post('/bloquear',({ body }) => miConsulta.bloquear(body), {
         body: t.Object({
             email1: t.String(),

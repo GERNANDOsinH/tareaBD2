@@ -7,7 +7,7 @@ from logic.python.desmarcar import desmarcarFavorito
 url = "http://localhost:3000"
 operacion = ""
 while (operacion != "Salir"):
-    operacion = input()
+    operacion = input("Ingrese la Operacion que desea realizar\n")
     if (operacion == "Salir"): exit(0)
     elif (operacion == "Registrar usuario"): registrarUsuario(url)
     elif (operacion == "Información"): buscarInformacion(url)
