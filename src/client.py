@@ -5,13 +5,19 @@ from logic.python.marcar import marcarFavorito
 from logic.python.desmarcar import desmarcarFavorito
 
 url = "http://localhost:3000"
-operacion = ""
-while (operacion != "Salir"):
-    operacion = input("Ingrese la Operacion que desea realizar\n")
-    if (operacion == "Salir"): exit(0)
-    elif (operacion == "Registrar usuario"): registrarUsuario(url)
-    elif (operacion == "Información"): buscarInformacion(url)
-    elif (operacion == "bloquear"): bloquearUsuario(url)
-    elif (operacion == "Marcar Correo"): marcarFavorito(url)
-    elif (operacion == "Desmarcar Correo"): desmarcarFavorito(url)
+operacion = 0
+while (operacion != 6):
+    print("(1) Registrar Usuario\n")
+    print("(2) Información\n")
+    print("(3) Bloquear\n")
+    print("(4) Marcar Correo\n")
+    print("(5) Desmarcar Correo\n")
+    print("(6) Salir\n")
+    operacion = int(input("Ingrese la Operacion que desea realizar\n"))
+    if (operacion == 6): exit(0)
+    elif (operacion == 1): registrarUsuario(url)
+    elif (operacion == 2): buscarInformacion(url)
+    elif (operacion == 3): bloquearUsuario(url)
+    elif (operacion == 4): marcarFavorito(url)
+    elif (operacion == 5): desmarcarFavorito(url)
     else: print("Error")

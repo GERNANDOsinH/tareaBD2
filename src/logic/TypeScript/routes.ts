@@ -7,7 +7,7 @@ const miConsulta = new consulta();
 
 export const api = new Elysia()
     .get('/informacion/:correo',({ params : {correo} }) => {return miConsulta.informacion(correo)})
-    .post('/registrar',miConsulta.crearUsuario.bind(miConsulta.crearUsuario),{
+    .post('/registrar', miConsulta.crearUsuario.bind(miConsulta.crearUsuario),{
         body: t.Object({
             nombre: t.String(),
             correo: t.String(),
@@ -15,21 +15,21 @@ export const api = new Elysia()
             descripcion: t.String()
         })
     })
-    .post('/bloquear',({ body }) => miConsulta.bloquear(body), {
+    .post('/bloquear', miConsulta.bloquear.bind(miConsulta.bloquear), {
         body: t.Object({
             email1: t.String(),
             clave: t.String(),
             email2: t.String()
         })
     })
-    .post('/marcarcorreo', ({ body }) => miConsulta.marcarCorreo(body), {
+    .post('/marcarcorreo', miConsulta.marcarCorreo.bind(miConsulta.marcarCorreo), {
         body: t.Object({
             email1: t.String(),
             clave: t.String(),
             email2: t.String()
         })
     })
-    .delete('/desmarcarcorreo', ({ body }) => miConsulta.desmarcarCorreo(body), {
+    .delete('/desmarcarcorreo', miConsulta.desmarcarCorreo.bind(miConsulta.desmarcarCorreo), {
         body: t.Object({
             email1: t.String(),
             clave: t.String(),
